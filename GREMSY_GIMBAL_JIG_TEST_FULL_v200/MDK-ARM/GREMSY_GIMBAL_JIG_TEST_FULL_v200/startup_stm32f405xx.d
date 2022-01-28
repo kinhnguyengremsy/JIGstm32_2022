@@ -1,0 +1,1 @@
+gremsy_gimbal_jig_test_full_v200\startup_stm32f405xx.o: startup_stm32f405xx.s

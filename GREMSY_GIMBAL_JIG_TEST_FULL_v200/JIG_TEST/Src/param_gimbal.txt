@@ -1,0 +1,114 @@
+1.param request : 
+- gyrox  ---> index :   | id : GYROX_OFFSET
+- gyroy  ---> index :   | id : GYROY_OFFSET
+- gyroz  ---> index :   | id : GYROZ_OFFSET
+- accelx ---> index :   | id : ACCX_OFFSET
+- accely ---> index :   | id : ACCY_OFFSET
+- accelz ---> index :   | id : ACCZ_OFFSET
+- oval   ---> index :   | id : GIMBAL_OVAL
+
+2. UDID
+
+```
+	    uint16_t len=0;
+    mavlink_message_t msg;
+    uint8_t buf[MAVLINK_MAX_PACKET_LEN];
+    if(isMavlinkV1Protocol() == false){
+        mavlink_msg_command_long_pack(SYSTEM_ID, MAV_COMP_ID_SYSTEM_CONTROL, &msg, SYSTEM_ID, MAV_COMP_ID_GIMBAL, MAV_CMD_REQUEST_UDID,0,0,0,0,0,0,0, 0);
+    }else{
+        mavlink_msg_unique_id_request_pack(SYSTEM_ID, MAV_COMP_ID_SERVO1, &msg, 1);
+    }
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    emit messageReadyToSendToLink((const char*)buf, len);
+```
+	
+3. Motor Offset 
+- tilt ---> index :    | id : USE_GPS
+- roll ---> index :    | id : ROLL_I
+- pan  ---> index :    | id : SBUS_FUNC_CHAN
+
+
+4. calib gyro
+ 
+send command
+```
+	uint16_t len;
+    mavlink_message_t msg;
+    uint8_t buf[MAVLINK_MAX_PACKET_LEN];
+    calib_type = GYRO_CALIB;
+    if(isMavlinkV1Protocol()==false) {
+        mavlink_msg_command_long_pack(SYSTEM_ID, MAV_COMP_ID_SYSTEM_CONTROL, &msg, SYSTEM_ID, MAV_COMP_ID_GIMBAL, MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION, 0,0,0,0,0,0,0,GYRO_CALIB);  // '1' means gyro calib
+    }
+    else{
+        mavlink_msg_imu_calib_request_pack(SYSTEM_ID, MAV_COMP_ID_SERVO1, &msg, 1, 0);  // '1' means gyro calib
+    }
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    emit messageReadyToSendToLink((const char*)buf, len);
+```
+
+get feedback
+```
+ - mavlink v1
+   check message MAVLINK_MSG_ID_SYSTEM_STATUS
+   
+   mavlink_sys_status_t gSystemStatus.onboard_control_sensors_health = mavlink_msg_system_status_get_imu_calib(&message);
+   updateImuCalibStatus();
+   
+ - mavlink v2
+   checxk message MAVLINK_MSG_ID_SYS_STATUS
+   
+   mavlink_sys_status_t gSystemStatus.onboard_control_sensors_health = mavlink_msg_sys_status_get_onboard_control_sensors_health(&message);
+   updateImuCalibStatus();
+   
+    void messagesManager::updateImuCalibStatus()
+    {
+        if(calib_type == ACC_CALIB)
+        {
+            switch(gSystemStatus.onboard_control_sensors_health)
+            {
+            case CALIB_FINISH:
+                calib_type = CALIB_NONE;
+                emit calibImuFinishedChanged(true);
+                break;
+            case CALIB_FAIL:
+                calib_type = CALIB_NONE;
+                emit calibImuFinishedChanged(false);
+                break;
+            default:
+
+                break;
+            }
+        } else if(calib_type == GYRO_CALIB)
+        {
+            qDebug() << "IMU calib status: " << gSystemStatus.onboard_control_sensors_health;
+            switch(gSystemStatus.onboard_control_sensors_health){
+            case CALIB_FINISH:
+                calib_type = CALIB_NONE;
+                emit calibImuFinishedChanged(true);
+                break;
+            case CALIB_FAIL:
+                calib_type = CALIB_NONE;
+                emit calibImuFinishedChanged(false);
+                break;
+            default:
+                break;
+            }
+        } else if(calib_type == CALIB_NONE){
+            emit calibImu_6Surfaces_FinishedChanged(gSystemStatus.onboard_control_sensors_health);
+
+        }
+    }
+
+```
+
+5. param set
+
+tilt-up: TRAVEL_MIN_PIT
+
+tilt-down: TRAVEL_MAX_PIT
+
+roll-up: TRAVEL_MIN_ROLL
+
+roll_down: TRAVEL_MAX_ROLL
+
+roll-offset: TRIM_HOZ

@@ -1,0 +1,71 @@
+#define MAVLINK_MSG_ID_SYS_STATUS 1
+
+
+typedef struct __mavlink_sys_status_t {
+uint32_t onboard_control_sensors_present; /*<  Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.*/
+uint32_t onboard_control_sensors_enabled; /*<  Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.*/
+uint32_t onboard_control_sensors_health; /*<  Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy.*/
+uint16_t load; /*< [d%] Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000*/
+uint16_t voltage_battery; /*< [mV] Battery voltage, UINT16_MAX: Voltage not sent by autopilot*/
+int16_t current_battery; /*< [cA] Battery current, -1: Current not sent by autopilot*/
+uint16_t drop_rate_comm; /*< [c%] Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)*/
+uint16_t errors_comm; /*<  Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)*/
+uint16_t errors_count1; /*<  Autopilot-specific errors*/
+uint16_t errors_count2; /*<  Autopilot-specific errors*/
+uint16_t errors_count3; /*<  Autopilot-specific errors*/
+uint16_t errors_count4; /*<  Autopilot-specific errors*/
+int8_t battery_remaining; /*< [%] Battery energy remaining, -1: Battery remaining energy not sent by autopilot*/
+} mavlink_sys_status_t;
+
+
+COMPARE STATUS GIMBAL
+/// dinh nghia trang thai
+typedef enum
+{
+   STATUS1_MODE_LOCK           = 0x00,
+   STATUS1_MODE_FOLLOW         = 0x01,
+   STATUS1_MODE_MAPPING        = 0x03,
+//    STATUS1_MISS_STEP           = 0x02,
+   STATUS1_SENSOR_ERROR        = 0x04,
+   STATUS1_BATT_LOW            = 0x08,
+   STATUS1_MOTORS              = 0x10,         /// motors on = 1, motor off = 0 (fimware 1.3.4)*/
+   STATUS1_INIT_MOTOR          = 0x20,
+   STATUS1_AUTO_TUNER          = 0x40,         /// 0b0100 0000
+   STATUS1_CANLINK             = 0x80,         /// 0b1000 0000 ket noi can link.
+   STATUS1_SEARCH_HOME         = 0x100,        /// search home
+   STATUS1_SET_HOME            = 0x200,        /// set home
+   STATUS1_SENSOR_CALIB        = 0x400,        /// calib sensor gom accel va gyro
+   STATUS1_STARTUP             = 0x800,        /// bao loi calib luc khoi dong
+   STATUS1_REMOTE              = 0x1000,
+   STATUS1_INVERTED            = 0x2000,
+   STATUS1_MOTOR_PHASE_ERROR   = 0x4000,
+   STATUS1_MOTOR_ANGLE_ERROR   = 0x8000,
+}
+pixy_status1_t;
+
+/// dinh nghia trang thai
+typedef enum
+{
+   STATUS2_IMU_ERROR               = 0x01,
+
+
+   STATUS2_JOYSTICK_ERROR          = 0x10,
+   STATUS2_INVERTED_ERROR          = 0x20,
+   STATUS2_PAN_SEARCH_HOME_ERROR   = 0x40,
+
+   STATUS2_ANGLE_TILT_ERROR        = 0x80,
+   STATUS2_ANGLE_ROLL_ERROR        = 0x100,
+   STATUS2_ANGLE_PAN_ERROR         = 0x200,
+
+   STATUS2_MOVE_TILT_ERROR         = 0x400,
+   STATUS2_MOVE_ROLL_ERROR         = 0x800,
+   STATUS2_MOVE_PAN_ERROR          = 0x1000,
+   
+   STATUS2_MOTOR_FRAME_ERROR       = 0x2000,
+}
+pixy_status2_t;
+
+
+pixy_status1 = errors_count1
+
+pixy_status2 = errors_count2

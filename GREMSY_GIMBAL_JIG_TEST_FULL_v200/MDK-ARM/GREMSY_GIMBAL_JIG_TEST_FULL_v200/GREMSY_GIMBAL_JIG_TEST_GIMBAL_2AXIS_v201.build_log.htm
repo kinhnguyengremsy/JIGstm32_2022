@@ -1,0 +1,116 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Kinh Nguyen, asdfasdf, LIC=47GU5-G6NCB-306NC-7BRJE-H5EII-0ZT5X
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.25.2.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.25.2.0
+Dialog DLL:      DCM.DLL V1.17.1.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TCM.DLL V1.35.1.0
+ 
+<h2>Project:</h2>
+D:\Gremsy\firmware\github\JIG_stm32Gimbal\GREMSY_GIMBAL_JIG_TEST_FULL_v200\MDK-ARM\GREMSY_GIMBAL_JIG_TEST_FULL_v200.uvprojx
+Project File Date:  10/21/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'GREMSY_GIMBAL_JIG_TEST_FULL_v200'
+compiling timeOut.c...
+compiling JIG_TEST_button.c...
+compiling main.c...
+compiling JIG_TEST_gimbal_FSTD_v2.c...
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1264): warning:  #550-D: variable "getValue"  was set but never used
+      static bool getValue = false;
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(3295): warning:  #177-D: variable "buff"  was declared but never referenced
+              char buff[100];
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(857): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_request_param_profile_ship"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_request_param_profile_ship(JIG_TEST_mavlink_gimbal_t *gimbal_channel)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1669): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_get_cloudData_login"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_get_cloudData_login(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1677): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_get_cloudData_scan_barCode"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_get_cloudData_scan_barCode(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1685): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_get_cloudData_start"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_get_cloudData_start(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1693): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_get_cloudData_heartbeatReady"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_get_cloudData_heartbeatReady(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(1735): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_v2_get_reset_system"  was declared but never referenced
+  static bool JIG_TEST_gimbal_FSTD_v2_get_reset_system(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c(3527): warning:  #177-D: function "JIG_TEST_gimbal_FSTD_back_to_scan_new_barCode"  was declared but never referenced
+  static void JIG_TEST_gimbal_FSTD_back_to_scan_new_barCode(void)
+..\JIG_TEST\Src\JIG_TEST_gimbal_FSTD_v2.c: 9 warnings, 0 errors
+compiling JIG_TEST_sbus_gimbal.c...
+compiling JIG_TEST_can_dji_.c...
+compiling JIG_TEST_aux.c...
+..\JIG_TEST\Src\JIG_TEST_aux.c(71): warning:  #177-D: variable "PIN_OUT"  was declared but never referenced
+  static pin_t PIN_OUT[] = 
+..\JIG_TEST\Src\JIG_TEST_aux.c(84): warning:  #177-D: variable "PIN_IN"  was declared but never referenced
+  static pin_t PIN_IN[] = 
+..\JIG_TEST\Src\JIG_TEST_aux.c(158): warning:  #177-D: function "JIG_TEST_aux_gpio_toggle"  was declared but never referenced
+  static void JIG_TEST_aux_gpio_toggle(pin_t pin)
+..\JIG_TEST\Src\JIG_TEST_aux.c(166): warning:  #177-D: function "JIG_TEST_aux_gpio_readPin"  was declared but never referenced
+  static uint8_t JIG_TEST_aux_gpio_readPin(pin_t pin)
+..\JIG_TEST\Src\JIG_TEST_aux.c(174): warning:  #177-D: function "JIG_TEST_aux_gpio_transmit"  was declared but never referenced
+  static void JIG_TEST_aux_gpio_transmit(pin_t pin, uint32_t time)
+..\JIG_TEST\Src\JIG_TEST_aux.c(261): warning:  #177-D: function "JIG_TEST_aux_test_process"  was declared but never referenced
+  static void JIG_TEST_aux_test_process(bool enable)
+..\JIG_TEST\Src\JIG_TEST_aux.c: 6 warnings, 0 errors
+compiling JIG_TEST_ppm_gimbal.c...
+compiling JIG_TEST_comm_raspberry_v2.c...
+compiling JIG_TEST_display_v2.c...
+..\SSD1306\Inc\ssd1306.h(160): warning:  #1295-D: Deprecated declaration ssd1306_GetDisplayOn - give arg types
+  uint8_t ssd1306_GetDisplayOn();
+..\JIG_TEST\Src\JIG_TEST_display_v2.c(251): warning:  #940-D: missing return statement at end of non-void function "JIG_TEST_display_get_device_name" 
+  }
+..\JIG_TEST\Src\JIG_TEST_display_v2.c(155): warning:  #177-D: function "JIG_TEST_display_ErrorHandle"  was declared but never referenced
+  static void JIG_TEST_display_ErrorHandle(void)
+..\JIG_TEST\Src\JIG_TEST_display_v2.c: 3 warnings, 0 errors
+compiling JIG_TEST_CommEsp32.c...
+..\JIG_TEST\Src\JIG_TEST_CommEsp32.c(680): warning:  #550-D: variable "time_process"  was set but never used
+      static uint32_t time_process = 0;
+..\JIG_TEST\Src\JIG_TEST_CommEsp32.c(368): warning:  #177-D: function "JIG_TEST_CommEsp32_GimbalControlAux"  was declared but never referenced
+  static void JIG_TEST_CommEsp32_GimbalControlAux(void *arg)
+..\JIG_TEST\Src\JIG_TEST_CommEsp32.c: 2 warnings, 0 errors
+compiling JIG_TEST_mavlink_gimbal.c...
+linking...
+Program Size: Code=44080 RO-data=19136 RW-data=3964 ZI-data=21404  
+FromELF: creating hex file...
+"GREMSY_GIMBAL_JIG_TEST_FULL_v200\GREMSY_GIMBAL_JIG_TEST_GIMBAL_2AXIS_v201.axf" - 0 Error(s), 20 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_GREMSY_GIMBAL_JIG_TEST_FULL_v200
+  C:\Users\User\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+      Include file:  CMSIS\Core\Include\tz_context.h
+Build Time Elapsed:  00:00:14
+</pre>
+</body>
+</html>

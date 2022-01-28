@@ -1,0 +1,10 @@
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Src\can_dji_remote.c
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Inc\can_dji_remote.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Inc\can_dji_protocol.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Inc\can_dji.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Inc\can_dji_camera.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: ..\DJI_CAN\Inc\can_dji_gimbal.h
+gremsy_gimbal_jig_test_full_v200\can_dji_remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
